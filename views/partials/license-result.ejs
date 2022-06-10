@@ -189,36 +189,39 @@
             contentType: "application/json; charset=utf-8",
             type: 'POST',
             success: function(data) {
-                console.log(data);
-                if (data.errors && data.errors.license) {
-                    document.getElementById('error-neph-license').innerText = data.errors.license;
-                    document.getElementById('error-date').innerText = data.errors.birthDate;
+                console.log('i am right here', data);
+                if (data.errors) {
+                    document.getElementById('error-neph-license').innerText = data.errors.license ? data.errors.license : '';
+                    document.getElementById('error-date').innerText = data.errors.birthDate ;
                     document.getElementById('error-submit').innerText = 'Vérifiez que tous les champs sont valides';
                 }
                 // 1- call the search post query
-                $.ajax({
-                    url: '/license',
-                    data: JSON.stringify(data),
-                    contentType: "application/json; charset=utf-8",
-                    type: 'POST',
-                    success: function(data) {
-                        // if scenario: failure
-                        if (data.errors && data.errors.length) {
-                            const ul = document.createElement("ul");
-                            const parentLi = document.createElement("ol");
-                            const li = document.createElement("li");
-                            const secondLi = document.createElement("li");
-                            parentLi.innerText = data.errors[0];
-                            li.innerText = data.errors[1];
-                            secondLi.innerText = data.errors[2];
-                            ul.appendChild(parentLi);
-                            ul.appendChild(li);
-                            ul.appendChild(secondLi);
-                            document.getElementById('error-submit').innerHTML = ul.innerHTML;
-                        }
-                        // success scenario
-                        else {
-                            const html = `<section data-v-7ef9e612="" data-v-88322036="" class="license-results">
+                if (data.body) {
+                    $.ajax({
+                        url: '/license',
+                        data: JSON.stringify(data.body),
+                        contentType: "application/json; charset=utf-8",
+                        type: 'POST',
+                        success: function(data) {
+                            // if scenario: failure
+                            console.log('post sucess');
+                            if (data.errors && data.errors.length) {
+                                const ul = document.createElement("ul");
+                                const parentLi = document.createElement("ol");
+                                const li = document.createElement("li");
+                                const secondLi = document.createElement("li");
+                                parentLi.innerText = data.errors[0];
+                                li.innerText = data.errors[1];
+                                secondLi.innerText = data.errors[2];
+                                ul.appendChild(parentLi);
+                                ul.appendChild(li);
+                                ul.appendChild(secondLi);
+                                document.getElementById('error-submit').innerHTML = ul.innerHTML;
+                            }
+                            // success scenario
+                            else {
+                                console.log('---------------data---------------', data);
+                                const html = `<section data-v-7ef9e612="" data-v-88322036="" class="license-results">
                                                         <div id="sr-hub-license-results" class="sr-hub-license-results">
                                                             <div data-v-4e9f4c1e="" class="entryPoint">
                                                                 <div data-v-9250de96="" data-v-4e9f4c1e="" class="step-download">
@@ -263,14 +266,15 @@
                                                             </div>
                                                         </div>
                                                 </section>`;
-                            document.getElementById('parent-section').innerHTML = html;
-                            document.getElementById('code').innerText = data.body.license;
-                            document.getElementById('birthDate').innerText = data.body.day + '/' + data.body.month + '/' + data.body.year;
-                            document.getElementById('category').innerText = data.body.category;
-                            localStorage.setItem('license', data.body.license);
+                                document.getElementById('parent-section').innerHTML = html;
+                                document.getElementById('code').innerText = data.body.license;
+                                document.getElementById('birthDate').innerText = data.body.day + '/' + data.body.month + '/' + data.body.year;
+                                document.getElementById('category').innerText = data.body.category;
+                                localStorage.setItem('license', data.body.license);
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
     });

@@ -38,7 +38,7 @@ router.post('/',
     if (errors.license || errors.category || errors.birthDate) {
         return res.json({ errors: errors, body: null });
     }
-    return res.json({ errors: null, data: req.body });
+    return res.json({ errors: null, body: req.body });
 });
 // router.post('/download',
 //     async function(req,res){
@@ -82,7 +82,8 @@ router.post('/',
 //         }
 // });
 router.post('/license', async function(req, res) {
-    const { license, day, month, year, category } = req.body.data;
+    console.log(req.body);
+    const { license, day, month, year, category } = req.body;
     const query = {
         text: 'SELECT * from license_value where code=$1 and category=$2 and day=$3 and month=$4 and year=$5',
         values: [license, category, day, month, year]
@@ -98,7 +99,7 @@ router.post('/license', async function(req, res) {
             })
         }
         // success
-        return res.json({ body: req.body.data, errors: null })
+        return res.json({ body: req.body, errors: null })
     } catch (error) {
         console.error(error);
     }
