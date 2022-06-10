@@ -104,6 +104,6 @@ router.post('/license', async function(req, res) {
     }
 });
 app.use('/', router);
-app.listen(process.env.port || 3000);
+app.listen(process.env.PORT || 5000);
 
 console.log('Running at Port 3000');
