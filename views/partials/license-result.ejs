@@ -160,20 +160,27 @@
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
-    $('#download-certificate').click(function () {
-        console.log('download is clicked =>')
-        console.log(localStorage.getItem('license'));
-        $.ajax({
-            url: '/download',
-            data: JSON.stringify({ license: 160638100251 }),
-            contentType: "application/json; charset=utf-8",
-            type: 'POST',
-            responseType: 'arraybuffer',
-            success: function(data) {
-                window.open('/pdf/foo.pdf');
-            }
-        })
-    })
+    // $('#download-certificate').click(function () {
+    //     console.log('download is clicked =>')
+    //     console.log(localStorage.getItem('license'));
+    //     $.ajax({
+    //         url: '/download',
+    //         data: JSON.stringify({ license: 160638100251 }),
+    //         contentType: "application/json; charset=utf-8",
+    //         type: 'POST',
+    //         responseType: 'arraybuffer',
+    //         success: function(data) {
+    //             console.log('-----data => ', data);
+    //             const url = window.URL.createObjectURL(new Blob([data]));
+    //             const link = document.createElement('a');
+    //             link.href = url;
+    //             link.setAttribute('download', 'file.pdf');
+    //             document.body.appendChild(link);
+    //             link.click();
+    //             // window.open('/pdf/foo.pdf');
+    //         }
+    //     })
+    // })
     $('#eventForm').submit(function (e) {
         e.preventDefault();
         const data = {
@@ -220,7 +227,6 @@
                             }
                             // success scenario
                             else {
-                                console.log('---------------data---------------', data);
                                 const html = `<section data-v-7ef9e612="" data-v-88322036="" class="license-results">
                                                         <div id="sr-hub-license-results" class="sr-hub-license-results">
                                                             <div data-v-4e9f4c1e="" class="entryPoint">
@@ -234,9 +240,11 @@
                                                                                 <p data-v-9250de96=""><strong data-v-9250de96="">Permis :</strong> <span id="category"></span></p>
                                                                             </div>
                                                                             <div data-v-9250de96="" class="submit-form-download">
-                                                                                <button data-v-9250de96="" class="full blue cta-round" id="download-certificate">
-                                                                                    Je télécharge mon Certificat
-                                                                                </button>
+                                                                                <form action="/download/<%- 160638100251 %>?_method=GET">
+                                                                                    <button data-v-9250de96="" type="submit" class="full blue cta-round" id="download-certificate">
+                                                                                        Je télécharge mon Certificat
+                                                                                    </button>
+                                                                                </form>
                                                                             </div>
                                                                             <div data-v-9250de96="" class="small-text">
                                                                                 <p data-v-9250de96="">

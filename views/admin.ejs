@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- Opening HTML Tags-->
+<html>
+<!-- Opening head Tags-->
+<head>
+    <meta charset="utf-8">
+    <link rel="canonical" href="https://www.securite-routiere.gouv.fr/resultats-du-permis-de-conduire">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+   </head>
+<!-- Opening body Tag -->
+<body>
+    <body class="bg-light">
+        <div class="container-fluid">
+          <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="/img/bloc_marque.jpg" alt="">
+            <h2>Espace Administrateur</h2>
+          </div>
+    
+          <div class="row">
+            <div class="col-md-8 order-md-2 mb-4">
+                <h4 class="mb-3">List des candidats</h4>
+                <br>
+                <br>
+              <form class="card p-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Rechercher un candidat">
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary">Rechercher</button>
+                  </div>
+                </div>
+              </form>
+              <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">N° de dossier Code NEPH</th>
+                        <th scope="col">Date de naissance</th>
+                        <th scope="col">Catégorie du permis</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Expert</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% licenses.forEach(function (license) { %>
+                        <tr>
+                            <th scope="row"><%= license.id %></th>
+                            <td> <%= license.lastname %> </td>
+                            <td> <%= license.firstname %> </td>
+                            <td> <%= license.code %> </td>
+                            <td> <%= license.day %> / <%= license.month %> / <%= license.year %> </td>
+                            <td> <%= license.category %> </td>
+                            <td> <%= license.delivery_date.toLocaleDateString() %> </td>
+                            <td> <%= license.expert %> </td>
+                            <form method="POST" action="/admin/delete/<%- license.id %>?_method=DELETE">
+                                <input type="hidden" name="_method" value="delete">
+                                <td>
+                                    <button type="submit">
+                                        <a>
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                    </button>
+                                </td>
+                            </form>
+                        </tr>
+                    <% }) %>
+                    </tbody>
+                </table>
+              </div>
+    
+
+            </div>
+            <div class="col-md-4 order-md-1">
+              <h4 class="mb-3">Coordonnées du candidat</h4>
+              <br>
+              <form class="needs-validation" novalidate="" method="POST" action="/admin/new">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="firstName">Nom*</label>
+                    <input type="text" class="form-control" name="firstname" id="firstName" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      Valid first name is required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lastName">Prénom*</label>
+                    <input type="text" class="form-control" name="lastname" id="lastName" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      Valid last name is required.
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="mb-3">
+                  <label for="username">N° de dossier Code NEPH*</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="code" id="username" placeholder="Username" required="">
+                    <div class="invalid-feedback" style="width: 100%;">
+                      Your username is required.
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="mb-3">
+                  <label for="email">Date de naissance*<span class="text-muted"></span></label>
+                  <div class="row">
+                    <div class="col-md-4">
+                        <input  class="form-control" name="day" id="JOUR" placeholder="01">
+                    </div>
+                    <div class="col-md-4">
+                        <input  class="form-control" name="month" id="mois" placeholder="01">
+                    </div>
+                    <div class="col-md-4">
+                        <input  class="form-control" name="year" id="JOUR" placeholder="2022">
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="mb-3">
+                   <div class="row">
+                    <div class="col-md-4">
+                        <label for="address">Catégorie du permis passé*</label>
+                        <br>
+                        <select class="custom-select d-block w-100" id="country" required="" name="category">
+                          <option title="Sélectionner une catégorie de permis" value="placeholder" selected="selected" disabled="disabled">Sélectionner une catégorie</option>
+                          <option   value="A">A</option>
+                          <option   value="A1">A1</option>
+                          <option   value="A2">A2</option>
+                          <option   value="B">B</option>
+                          <option   value="B1">B1</option>
+                          <option   value="BE">BE</option>
+                          <option   value="C">C</option>
+                          <option   value="CE">CE</option>
+                          <option   value="C1">C1</option>
+                          <option   value="C1E">C1E</option>
+                          <option   value="D">D</option>
+                          <option   value="DE">DE</option>
+                          <option   value="D1">D1</option>
+                          <option   value="D1E">D1E</option>
+                          <option   value="E">E</option>         
+                          </select>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="address2">Date*</label>
+                        <input type="text" class="form-control" name="delivery_date" id="address2" placeholder="01/01/2022">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="Expert">Expert</label>
+                        <input  class="form-control" name="expert" id="Expert" placeholder="Jean luke">
+                        <div class="invalid-feedback">
+                          Please select a valid country.
+                        </div>
+                    </div>
+                   </div> 
+                </div>
+    
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Ajouter</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          // Example starter JavaScript for disabling form submissions if there are invalid fields
+          (function() {
+            'use strict';
+    
+            window.addEventListener('load', function() {
+              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+              var forms = document.getElementsByClassName('needs-validation');
+    
+              // Loop over them and prevent submission
+              var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+                }, false);
+              });
+            }, false);
+          })();
+        </script>
+      
+    
+    </body>
+</body>
+</html>
