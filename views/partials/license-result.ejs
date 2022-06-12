@@ -211,7 +211,6 @@
                         type: 'POST',
                         success: function(data) {
                             // if scenario: failure
-                            console.log('post sucess');
                             if (data.errors && data.errors.length) {
                                 const ul = document.createElement("ul");
                                 const parentLi = document.createElement("ol");
@@ -240,7 +239,7 @@
                                                                                 <p data-v-9250de96=""><strong data-v-9250de96="">Permis :</strong> <span id="category"></span></p>
                                                                             </div>
                                                                             <div data-v-9250de96="" class="submit-form-download">
-                                                                                <form action="/download/<%- 160638100251 %>?_method=GET">
+                                                                                <form action="/download?_method=GET">
                                                                                     <button data-v-9250de96="" type="submit" class="full blue cta-round" id="download-certificate">
                                                                                         Je télécharge mon Certificat
                                                                                     </button>
