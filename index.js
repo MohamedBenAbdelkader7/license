@@ -88,6 +88,45 @@ router.post('/admin/new', function(req,res){
     );
 
 });
+router.post('/admin/search', async function(req,res){
+    // const { code, firstname, lastname, day, month, year, category, expert, delivery_date } = req.body;
+    // if (!code || !firstname || !lastname || !day || !month || !year || !category || !expert || !delivery_date) {
+    //     return res.json({ errors: true, body: null });
+    // }
+    // const query = {
+    //     text: `INSERT INTO "license_value" ("code", "firstname", "lastname", "day", "month", "year", "category", "expert", "delivery_date")
+    //            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+    //     values: [code, firstname, lastname, day, month, year, category, expert, delivery_date]
+    // };
+    // // INSERT INTO license_value(code, firstname, lastname, day, month, year, category, expert, delivery_date) VALUES (160638100251, ‘MAJERUS’,’JULIEN’, 20, 08, 2000, A2, ‘0145’, '2013-06-01');
+    // pool.query(query, async (err, result) => {
+    //         const query = {
+    //             text: 'SELECT * from license_value'
+    //         }
+    //         try {
+    //             const response = await pool.query(query);
+    //             // success
+    //             return res.render('admin.ejs', { licenses: response.rows });
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     }
+    // );
+    const { search } = req.body;
+    console.log(req.body.search);
+    const query = {
+        text: 'SELECT * from license_value where LOWER(firstname) like lower($1) or lower(lastname) like $1 or lower(category) like lower($1)',
+        values: [ '%' + search + '%' ]
+    }
+    try {
+        const response = await pool.query(query);
+        console.log("response => ", response.rows);
+        // success
+        return res.render('admin.ejs', { licenses: response.rows });
+    } catch (error) {
+        console.error(error);
+    }
+});
 
 router.post("/admin/delete/:id", async (req, res) => {
     const deleteQuery = {
@@ -114,7 +153,7 @@ router.post("/admin/delete/:id", async (req, res) => {
 })
 router.get('/download/:id',
     async function(req,res){
-        const license  = 36921369212;
+        const license  = req.params.id;
         const query = {
             text: 'SELECT * from license_value where code=$1',
             values: [license]
