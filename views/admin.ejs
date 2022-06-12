@@ -26,16 +26,21 @@
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="firstName">Nom*</label>
-                    <input type="text" class="form-control" name="firstname" id="firstName" placeholder="" value="" required="">
+                    <input type="text"
+                           class="form-control" name="firstname" id="firstName"
+                           style="text-transform: uppercase"
+                           placeholder="" value="" required="">
                     <div class="invalid-feedback">
-                      Valid first name is required.
+                      Champ obligatoire.
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="lastName">Prénom*</label>
-                    <input type="text" class="form-control" name="lastname" id="lastName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" name="lastname"
+                           style="text-transform: capitalize"
+                           id="lastName" placeholder="" value="" required="">
                     <div class="invalid-feedback">
-                      Valid last name is required.
+                      Champ obligatoire.
                     </div>
                   </div>
                 </div>
@@ -43,9 +48,11 @@
                 <div class="mb-3">
                   <label for="username">N° de dossier Code NEPH*</label>
                   <div class="input-group">
-                    <input type="text" class="form-control" name="code" id="username" placeholder="Username" required="">
+                    <input type="number" class="form-control"
+                           min="100000000000" max="999999999999"
+                           name="code" id="username" required="">
                     <div class="invalid-feedback" style="width: 100%;">
-                      Your username is required.
+                      12 chiffres obligatoire.
                     </div>
                   </div>
                 </div>
@@ -54,13 +61,65 @@
                   <label for="email">Date de naissance*<span class="text-muted"></span></label>
                   <div class="row">
                     <div class="col-md-4">
-                        <input  class="form-control" name="day" id="JOUR" placeholder="01">
+                        <select class="form-control d-block w-100" required="" name="day" id="JOUR">
+                            <option title="Sélectionner jour de naissance" value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <input  class="form-control" name="month" id="mois" placeholder="01">
+                        <select name="month" id="month" class="form-control d-block w-100">
+                            <option value="01">Janvier</option>
+                            <option value="02">Février</option>
+                            <option value="03">Mars</option>
+                            <option value="04">Avril</option>
+                            <option value="05">Mai</option>
+                            <option value="06">Juin</option>
+                            <option value="07">Juillet</option>
+                            <option value="08">Août</option>
+                            <option value="09">Septembre</option>
+                            <option value="10">Octobre</option>
+                            <option value="11">Novembre</option>
+                            <option value="12">Décembre</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <input  class="form-control" name="year" id="JOUR" placeholder="2022">
+                        <input type="number"
+                               min="1900"
+                               max="2070"
+                               required
+                               class="form-control" name="year" id="JOUR" placeholder="2022">
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Champ obligatoire.
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -71,8 +130,7 @@
                         <label for="address">Catégorie du permis passé*</label>
                         <br>
                         <select class="form-control d-block w-100" id="country" required="" name="category">
-                          <option title="Sélectionner une catégorie de permis" value="placeholder" selected="selected" disabled="disabled">Sélectionner une catégorie</option>
-                          <option   value="A">A</option>
+                          <option selected="selected" value="A">A</option>
                           <option   value="A1">A1</option>
                           <option   value="A2">A2</option>
                           <option   value="B">B</option>
@@ -92,13 +150,19 @@
                     </div>
                     <div class="col-md-4">
                         <label for="address2">Date*</label>
-                        <input type="text" class="form-control" name="delivery_date" id="address2" placeholder="01/01/2022">
+                        <input type="text" class="form-control" name="delivery_date" id="address2" placeholder="01/01/2022" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Champ obligatoire.
+                        </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="Expert">Expert</label>
-                        <input  class="form-control" name="expert" id="Expert" placeholder="Jean luke">
+                        <label for="Expert">Expert*</label>
+                        <input  type="number"
+                                class="form-control" name="expert"
+                                required
+                                id="Expert" placeholder="0140">
                         <div class="invalid-feedback">
-                          Please select a valid country.
+                          Champ obligatoire.
                         </div>
                     </div>
                    </div> 

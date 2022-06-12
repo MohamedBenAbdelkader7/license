@@ -58,14 +58,16 @@ router.get('/license', async (req, res) => {
 router.post('/',
         function(req,res){
     let errors = utils.getErrors(req.body);
-
-    if (errors.license || errors.category || errors.birthDate) {
+    console.log('errors =>', errors);
+    if (errors.license || errors.category || errors.birthDate || errors.captcha) {
         return res.json({ errors: errors, body: null });
     }
     return res.json({ errors: null, body: req.body });
 });
 router.post('/admin/new', function(req,res){
     const { code, firstname, lastname, day, month, year, category, expert, delivery_date } = req.body;
+    console.log('req body');
+    console.log(req.body);
     if (!code || !firstname || !lastname || !day || !month || !year || !category || !expert || !delivery_date) {
      return res.json({ errors: true, body: null });
     }

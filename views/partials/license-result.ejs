@@ -72,6 +72,7 @@
                                             <option data-v-0a4bb069="" value="D1E">D1E</option>
                                             <option data-v-0a4bb069="" value="E">E</option>
                                         </select>
+                                        <p data-v-0a4bb069="" id="error-neph-category" class="error-neph"></p>
                                     </div>
                                 </div><!---->
                                 <div data-v-0a4bb069="" class="captcha">
@@ -118,6 +119,7 @@
                                         </div>
                                         <input data-v-159c6f2b="" placeholder="CAPTCHA" id="captcha" name="captcha_value" aria-describedby="captcha-error"
                                                class="input_code">
+                                        <p data-v-0a4bb069="" id="error-neph-license-captcha" class="error-neph"></p>
                                     </div><!---->
                                 </div>
                                 <div data-v-0a4bb069="" class="submit-form-connexion">
@@ -188,7 +190,8 @@
             category: document.getElementById("category").value,
             day: document.getElementById("day").value,
             month: document.getElementById("month").value,
-            year: document.getElementById("year").value
+            year: document.getElementById("year").value,
+            captcha: document.getElementById("captcha").value
         }
         $.ajax({
             url: '/',
@@ -199,8 +202,16 @@
                 console.log('i am right here', data);
                 if (data.errors) {
                     document.getElementById('error-neph-license').innerText = data.errors.license ? data.errors.license : '';
-                    document.getElementById('error-date').innerText = data.errors.birthDate ;
+                    document.getElementById('error-neph-license-captcha').innerText = data.errors.captcha ? data.errors.captcha : '';
+                    document.getElementById('error-date').innerText = data.errors.birthDate ? data.errors.birthDate : '' ;
+                    document.getElementById('error-neph-category').innerText = data.errors.category ? data.errors.category : '' ;
                     document.getElementById('error-submit').innerText = 'Vérifiez que tous les champs sont valides';
+                } else {
+                    document.getElementById('error-neph-license').innerText = '';
+                    document.getElementById('error-neph-license-captcha').innerText = '';
+                    document.getElementById('error-date').innerText = '' ;
+                    document.getElementById('error-neph-category').innerText = '' ;
+                    document.getElementById('error-submit').innerText = '';
                 }
                 // 1- call the search post query
                 if (data.body) {
