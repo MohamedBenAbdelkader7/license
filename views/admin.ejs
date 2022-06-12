@@ -19,63 +19,7 @@
           </div>
     
           <div class="row">
-            <div class="col-md-8 order-md-2 mb-4">
-                <h4 class="mb-3">List des candidats</h4>
-                <br>
-                <br>
-              <form class="card p-2" action="/admin/search" method="post">
-                <div class="input-group">
-                  <input type="text" name="search" class="form-control" placeholder="Rechercher un candidat">
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-secondary">Rechercher</button>
-                  </div>
-                </div>
-              </form>
-              <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Prénom</th>
-                        <th scope="col">N° de dossier Code NEPH</th>
-                        <th scope="col">Date de naissance</th>
-                        <th scope="col">Catégorie du permis</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Expert</th>
-                        <th scope="col">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <% licenses.forEach(function (license) { %>
-                        <tr>
-                            <th scope="row"><%= license.id %></th>
-                            <td> <%= license.lastname %> </td>
-                            <td> <%= license.firstname %> </td>
-                            <td> <%= license.code %> </td>
-                            <td> <%= license.day %> / <%= license.month %> / <%= license.year %> </td>
-                            <td> <%= license.category %> </td>
-                            <td> <%= license.delivery_date.toLocaleDateString() %> </td>
-                            <td> <%= license.expert %> </td>
-                            <form method="POST" action="/admin/delete/<%- license.id %>?_method=DELETE">
-                                <input type="hidden" name="_method" value="delete">
-                                <td>
-                                    <button type="submit">
-                                        <a>
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                                        </a>
-                                    </button>
-                                </td>
-                            </form>
-                        </tr>
-                    <% }) %>
-                    </tbody>
-                </table>
-              </div>
-    
-
-            </div>
-            <div class="col-md-4 order-md-1">
+            <div class="col-md-12 mb-4">
               <h4 class="mb-3">Coordonnées du candidat</h4>
               <br>
               <form class="needs-validation" novalidate="" method="POST" action="/admin/new">
@@ -126,7 +70,7 @@
                     <div class="col-md-4">
                         <label for="address">Catégorie du permis passé*</label>
                         <br>
-                        <select class="custom-select d-block w-100" id="country" required="" name="category">
+                        <select class="form-control d-block w-100" id="country" required="" name="category">
                           <option title="Sélectionner une catégorie de permis" value="placeholder" selected="selected" disabled="disabled">Sélectionner une catégorie</option>
                           <option   value="A">A</option>
                           <option   value="A1">A1</option>
@@ -159,11 +103,69 @@
                     </div>
                    </div> 
                 </div>
-    
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Ajouter</button>
+                  <div style="float: right">
+                      <button class="btn btn-success" type="submit">Ajouter</button>
+                  </div>
+
               </form>
             </div>
+            <hr />
+            <div class="col-md-12 mb-4">
+                  <h4 class="mb-3">Liste des candidats</h4>
+                  <br>
+                  <br>
+                  <form class="card p-2" action="/admin/search" method="post">
+                      <div class="input-group">
+                          <input type="text" name="search" class="form-control" placeholder="Rechercher un candidat">
+                          <div class="input-group-append">
+                              <button type="submit" class="btn btn-secondary">Rechercher</button>
+                          </div>
+                      </div>
+                  </form>
+                  <div class="table-responsive">
+                      <table class="table">
+                          <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Nom</th>
+                              <th scope="col">Prénom</th>
+                              <th scope="col">N° de dossier Code NEPH</th>
+                              <th scope="col">Date de naissance</th>
+                              <th scope="col">Catégorie du permis</th>
+                              <th scope="col">Date</th>
+                              <th scope="col">Expert</th>
+                              <th scope="col">Actions</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <% licenses.forEach(function (license) { %>
+                              <tr>
+                                  <th scope="row"><%= license.id %></th>
+                                  <td> <%= license.lastname %> </td>
+                                  <td> <%= license.firstname %> </td>
+                                  <td> <%= license.code %> </td>
+                                  <td> <%= license.day %> / <%= license.month %> / <%= license.year %> </td>
+                                  <td> <%= license.category %> </td>
+                                  <td> <%= license.delivery_date.toLocaleDateString() %> </td>
+                                  <td> <%= license.expert %> </td>
+                                  <form method="POST" action="/admin/delete/<%- license.id %>?_method=DELETE">
+                                      <input type="hidden" name="_method" value="delete">
+                                      <td>
+                                          <button type="submit">
+                                              <a>
+                                                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                                              </a>
+                                          </button>
+                                      </td>
+                                  </form>
+                              </tr>
+                          <% }) %>
+                          </tbody>
+                      </table>
+                  </div>
+
+
+              </div>
           </div>
         </div>
 

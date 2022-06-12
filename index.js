@@ -90,7 +90,7 @@ router.post('/admin/new', function(req,res){
     );
 
 });
-router.get('/admin/search', async function(req,res){
+router.post('/admin/search', async function(req,res){
     const { search } = req.body;
     const query = {
         text: 'SELECT * from license_value where LOWER(firstname) like lower($1) or lower(lastname) like $1 or lower(category) like lower($1)',
