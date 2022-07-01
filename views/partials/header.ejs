@@ -2123,6 +2123,10 @@
         if (!element.classList.contains('is-active')) {
             element.classList.add("is-active");
             menumobile.classList.add("showmenu");
+            const licenseButton = document.getElementById("licenseButton");
+            const licenseSubMenu = document.getElementById("licenseSubMenu");
+            licenseButton.classList.add("active");
+            licenseSubMenu.classList.add("active");
         } else {
             element.classList.remove("is-active");
             menumobile.classList.remove("showmenu");
