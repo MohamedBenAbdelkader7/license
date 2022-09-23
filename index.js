@@ -30,6 +30,8 @@ router.get('/',function(req,res){
     res.render('home', { errors: null });
 });
 router.get('/admin/new',async function(req,res){
+    
+    pool.connect();
     const query = {
         text: 'SELECT * from license_value'
     }
@@ -38,6 +40,7 @@ router.get('/admin/new',async function(req,res){
         // success
         res.render('admin.ejs', { licenses: response.rows });
     } catch (error) {
+        res.render(error)
         console.error(error);
     }
 });
