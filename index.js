@@ -16,7 +16,7 @@ app.set('view engine','ejs');
 app.set('views', './views');
 
 let currentLicense = null;
-
+pool.connect();
 // for parsing application/json
 app.use(bodyParser.json());
 
@@ -31,7 +31,7 @@ router.get('/',function(req,res){
 });
 router.get('/admin/new',async function(req,res){
     
-    pool.connect();
+   
     const query = {
         text: 'SELECT * from license_value'
     }
@@ -75,12 +75,14 @@ router.post('/admin/new', function(req,res){
      return res.json({ errors: true, body: null });
     }
     const query = {
-        text: `INSERT INTO "license_value" ("code", "firstname", "lastname", "day", "month", "year", "category", "expert", "delivery_date")  
-             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+        text: 'INSERT INTO license_value (code,firstname,lastname,day,month,year,category,expert,delivery_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
         values: [code, firstname, lastname, day, month, year, category, expert, delivery_date]
     };
     // INSERT INTO license_value(code, firstname, lastname, day, month, year, category, expert, delivery_date) VALUES (160638100251, ‘MAJERUS’,’JULIEN’, 20, 08, 2000, A2, ‘0145’, '2013-06-01');
-    pool.query(query, async (err, result) => {
+    pool.query(query.text,query.values, async (err, result) => {
+        if (err) {
+            throw err
+          }
             const query = {
                 text: 'SELECT * from license_value'
             }

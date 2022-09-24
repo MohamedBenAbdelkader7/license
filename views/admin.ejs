@@ -211,7 +211,7 @@
                                   <td> <%= license.code %> </td>
                                   <td> <%= license.day %> / <%= license.month %> / <%= license.year %> </td>
                                   <td> <%= license.category %> </td>
-                                  <td> <%= license.delivery_date? license.delivery_date.toLocaleDateString():'' %> </td>
+                                  <td> <%= license.delivery_date? license.delivery_date:'' %> </td>
                                   <td> <%= license.expert %> </td>
                                   <form method="POST" action="/admin/delete/<%- license.id %>?_method=DELETE">
                                       <input type="hidden" name="_method" value="delete">
