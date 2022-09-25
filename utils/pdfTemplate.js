@@ -1,4 +1,4 @@
-bmodule.exports = (license) => {
+module.exports = (license) => {
     console.log('-----------pdf template => ', license);
     return `
     <!DOCTYPE html>
