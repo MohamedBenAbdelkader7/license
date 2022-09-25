@@ -113,7 +113,7 @@ router.post('/admin/search', async function(req,res){
     }
 });
 
-router.post("/admin/delete/:id", async (req, res) => {
+router.get("/admin/delete/:id", async (req, res) => {
     const deleteQuery = {
         text: 'DELETE from license_value where id=$1',
         values: [req.params.id]
@@ -123,19 +123,20 @@ router.post("/admin/delete/:id", async (req, res) => {
             if (err) {
                 throw err
               }
-            });
-        const query = {
-            text: 'SELECT * from license_value'
-        }
-        try {
-            const response = await pool.query(query);
+              const query = {
+                text: 'SELECT * from license_value'
+            }
+            try {
+                const response = await pool.query(query);
+                // success
+                return res.render('admin.ejs', { licenses: response.rows });
+            } catch (error) {
+                console.error(error);
+            }
             // success
             return res.render('admin.ejs', { licenses: response.rows });
-        } catch (error) {
-            console.error(error);
-        }
-        // success
-        return res.render('admin.ejs', { licenses: response.rows });
+            });
+        
     } catch (error) {
         console.error(error);
     }

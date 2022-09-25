@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.securite-routiere.gouv.fr/resultats-du-permis-de-conduire">
     <!-- CSS only -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
    </head>
 <!-- Opening body Tag -->
@@ -182,7 +182,7 @@
                       <div class="input-group">
                           <input type="text" name="search" class="form-control" placeholder="Rechercher un candidat">
                           <div class="input-group-append">
-                              <button type="submit" class="btn btn-secondary">Rechercher</button>
+                              <button type="submit" class="btn btn-primary">Rechercher</button>
                           </div>
                       </div>
                   </form>
@@ -217,16 +217,15 @@
                                   <td> <%= license.delivery_date? license.delivery_date:'' %> </td>
                                   <td> <%= license.expert %> </td>
                                   <td> <%= license.created_at.getDate().toString().padStart(2, '0') %>/<%= license.created_at.getMonth().toString().padStart(2, '0') %>/<%= license.created_at.getFullYear() %> </td>
-                                  <form method="POST" action="/admin/delete/<%- license.id %>?_method=DELETE">
-                                      <input type="hidden" name="_method" value="delete">
-                                      <td>
-                                          <button type="submit">
-                                              <a>
-                                                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                                              </a>
-                                          </button>
-                                      </td>
-                                  </form>
+                                  <td></td>
+                                  <td>
+                                      <a href="/download/<%=license.id%>" class="btn btn-secondary text-white">
+                                        <i class="fa fa-print fa-sm" aria-hidden="true"></i>
+                                      </a>
+                                      <a href="/delete/<%=license.id%>" class="btn btn-danger text-white">
+                                          <i class="fa fa-trash fa-sm" aria-hidden="true"></i>
+                                      </a>
+                                  </td>
                               </tr>
                           <% }) %>
                           <% } %>
