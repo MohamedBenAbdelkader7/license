@@ -201,7 +201,6 @@
                               <th scope="col">Date</th>
                               <th scope="col">Expert</th>
                               <th scope="col">Actions</th>
-                              <th scope="col">Actions</th>
                           </tr>
                           </thead>
                           <tbody>
@@ -216,8 +215,6 @@
                                   <td> <%= license.category %> </td>
                                   <td> <%= license.delivery_date? license.delivery_date:'' %> </td>
                                   <td> <%= license.expert %> </td>
-                                  <td> <%= license.created_at.getDate().toString().padStart(2, '0') %>/<%= license.created_at.getMonth().toString().padStart(2, '0') %>/<%= license.created_at.getFullYear() %> </td>
-                                  <td></td>
                                   <td>
                                       <a href="/download/<%=license.id%>" class="btn btn-secondary text-white">
                                         <i class="fa fa-print fa-sm" aria-hidden="true"></i>
