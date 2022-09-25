@@ -13,7 +13,7 @@ module.exports = (license) => {
     font-family: fantasy,ff1;
 line-height: 1.024902;
 color: rgb(0,0,0);
-font-size: 22px;
+font-size: 25px;
 font-weight: 900;
 letter-spacing: 2px;
 }
