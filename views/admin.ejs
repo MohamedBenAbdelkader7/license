@@ -1,184 +1,183 @@
 <!DOCTYPE html>
-<!-- Opening HTML Tags-->
-<html>
-<!-- Opening head Tags-->
 <head>
     <meta charset="utf-8">
     <link rel="canonical" href="https://www.securite-routiere.gouv.fr/resultats-du-permis-de-conduire">
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
    </head>
 <!-- Opening body Tag -->
-<body>
     <body class="bg-light">
-        <div class="container-fluid">
-          <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="/img/bloc_marque.jpg" alt="">
-            <h2>Espace Administrateur</h2>
-          </div>
-    
-          <div class="row">
-            <div class="col-md-12 mb-4">
-              <h4 class="mb-3">Coordonnées du candidat</h4>
-              <br>
-              <form class="needs-validation" novalidate="" method="POST" action="/admin/new">
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="firstName">Nom*</label>
-                    <input type="text"
-                           class="form-control" name="firstname" id="firstName"
-                           style="text-transform: uppercase"
-                           placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      Champ obligatoire.
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="lastName">Prénom*</label>
-                    <input type="text" class="form-control" name="lastname"
-                           style="text-transform: capitalize"
-                           id="lastName" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      Champ obligatoire.
-                    </div>
-                  </div>
-                </div>
-    
-                <div class="mb-3">
-                  <label for="username">N° de dossier Code NEPH*</label>
-                  <div class="input-group">
-                    <input type="number" class="form-control"
-                           min="100000000000" max="999999999999"
-                           name="code" id="username" required="">
-                    <div class="invalid-feedback" style="width: 100%;">
-                      12 chiffres obligatoire.
-                    </div>
-                  </div>
-                </div>
-    
-                <div class="mb-3">
-                  <label for="email">Date de naissance*<span class="text-muted"></span></label>
-                  <div class="row">
-                    <div class="col-md-4">
-                        <select class="form-control d-block w-100" required="" name="day" id="JOUR">
-                            <option title="Sélectionner jour de naissance" value="01">01</option>
-                            <option value="02">02</option>
-                            <option value="03">03</option>
-                            <option value="04">04</option>
-                            <option value="05">05</option>
-                            <option value="06">06</option>
-                            <option value="07">07</option>
-                            <option value="08">08</option>
-                            <option value="09">09</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <select name="month" id="month" class="form-control d-block w-100">
-                            <option value="01">Janvier</option>
-                            <option value="02">Février</option>
-                            <option value="03">Mars</option>
-                            <option value="04">Avril</option>
-                            <option value="05">Mai</option>
-                            <option value="06">Juin</option>
-                            <option value="07">Juillet</option>
-                            <option value="08">Août</option>
-                            <option value="09">Septembre</option>
-                            <option value="10">Octobre</option>
-                            <option value="11">Novembre</option>
-                            <option value="12">Décembre</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="number"
-                               min="1900"
-                               max="2070"
-                               required
-                               class="form-control" name="year" id="JOUR" placeholder="2022">
-                        <div class="invalid-feedback" style="width: 100%;">
-                            Champ obligatoire.
-                        </div>
-                    </div>
-                  </div>
-                </div>
-    
-                <div class="mb-3">
-                   <div class="row">
-                    <div class="col-md-4">
-                        <label for="address">Catégorie du permis passé*</label>
-                        <br>
-                        <select class="form-control d-block w-100" id="country" required="" name="category">
-                          <option selected="selected" value="A">A</option>
-                          <option   value="A1">A1</option>
-                          <option   value="A2">A2</option>
-                          <option   value="B">B</option>
-                          <option   value="B1">B1</option>
-                          <option   value="BE">BE</option>
-                          <option   value="C">C</option>
-                          <option   value="CE">CE</option>
-                          <option   value="C1">C1</option>
-                          <option   value="C1E">C1E</option>
-                          <option   value="D">D</option>
-                          <option   value="DE">DE</option>
-                          <option   value="D1">D1</option>
-                          <option   value="D1E">D1E</option>
-                          <option   value="E">E</option>         
-                          </select>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="address2">Date*</label>
-                        <input type="text" class="form-control" name="delivery_date" id="address2" placeholder="01/01/2022" required>
-                        <div class="invalid-feedback" style="width: 100%;">
-                            Champ obligatoire.
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="Expert">Expert*</label>
-                        <input  type="number"
-                                class="form-control" name="expert"
-                                required
-                                id="Expert" placeholder="0140">
-                        <div class="invalid-feedback">
-                          Champ obligatoire.
-                        </div>
-                    </div>
-                   </div> 
-                </div>
-                  <div style="float: right">
-                      <button class="btn btn-success" type="submit">Ajouter</button>
-                  </div>
-
-              </form>
+        <div class="container">
+          <div class="container-fluid">
+            <div class="py-5 text-center">
+              <img class="d-block mx-auto mb-4" src="/img/bloc_marque.jpg" alt="">
+              <h2>Espace Administrateur</h2>
             </div>
-            <hr />
-            <div class="col-md-12 mb-4">
-                  <h4 class="mb-3">Liste des candidats</h4>
-                  <br>
-                  <br>
-                  <form class="card p-2" action="/admin/search" method="post">
+            <div class="row">
+              <div class="col-12 my-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Coordonnées du candidat</h4>
+                    <hr />
+                    <form class="needs-validation" novalidate="" method="POST" action="/admin/new">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label for="firstName">Nom*</label>
+                          <input type="text"
+                                class="form-control" name="firstname" id="firstName"
+                                style="text-transform: uppercase"
+                                placeholder="" value="" required="">
+                          <div class="invalid-feedback">
+                            Champ obligatoire.
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="lastName">Prénom*</label>
+                          <input type="text" class="form-control" name="lastname"
+                                style="text-transform: capitalize"
+                                id="lastName" placeholder="" value="" required="">
+                          <div class="invalid-feedback">
+                            Champ obligatoire.
+                          </div>
+                        </div>
+                      </div>
+          
+                      <div class="mb-3">
+                        <label for="username">N° de dossier Code NEPH*</label>
+                        <div class="input-group">
+                          <input type="number" class="form-control"
+                                min="100000000000" max="999999999999"
+                                name="code" id="username" required="">
+                          <div class="invalid-feedback" style="width: 100%;">
+                            12 chiffres obligatoire.
+                          </div>
+                        </div>
+                      </div>
+          
+                      <div class="mb-3">
+                        <label for="email">Date de naissance*<span class="text-muted"></span></label>
+                        <div class="row">
+                          <div class="col-md-4">
+                              <select class="form-control d-block w-100" required="" name="day" id="JOUR">
+                                  <option title="Sélectionner jour de naissance" value="01">01</option>
+                                  <option value="02">02</option>
+                                  <option value="03">03</option>
+                                  <option value="04">04</option>
+                                  <option value="05">05</option>
+                                  <option value="06">06</option>
+                                  <option value="07">07</option>
+                                  <option value="08">08</option>
+                                  <option value="09">09</option>
+                                  <option value="10">10</option>
+                                  <option value="11">11</option>
+                                  <option value="12">12</option>
+                                  <option value="13">13</option>
+                                  <option value="14">14</option>
+                                  <option value="15">15</option>
+                                  <option value="16">16</option>
+                                  <option value="17">17</option>
+                                  <option value="18">18</option>
+                                  <option value="19">19</option>
+                                  <option value="20">20</option>
+                                  <option value="21">21</option>
+                                  <option value="22">22</option>
+                                  <option value="23">23</option>
+                                  <option value="24">24</option>
+                                  <option value="25">25</option>
+                                  <option value="26">26</option>
+                                  <option value="27">27</option>
+                                  <option value="28">28</option>
+                                  <option value="29">29</option>
+                                  <option value="30">30</option>
+                                  <option value="31">31</option>
+                              </select>
+                          </div>
+                          <div class="col-md-4">
+                              <select name="month" id="month" class="form-control d-block w-100">
+                                  <option value="01">Janvier</option>
+                                  <option value="02">Février</option>
+                                  <option value="03">Mars</option>
+                                  <option value="04">Avril</option>
+                                  <option value="05">Mai</option>
+                                  <option value="06">Juin</option>
+                                  <option value="07">Juillet</option>
+                                  <option value="08">Août</option>
+                                  <option value="09">Septembre</option>
+                                  <option value="10">Octobre</option>
+                                  <option value="11">Novembre</option>
+                                  <option value="12">Décembre</option>
+                              </select>
+                          </div>
+                          <div class="col-md-4">
+                              <input type="number"
+                                    min="1900"
+                                    max="2070"
+                                    required
+                                    class="form-control" name="year" id="JOUR" placeholder="2022">
+                              <div class="invalid-feedback" style="width: 100%;">
+                                  Champ obligatoire.
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+          
+                      <div class="mb-3">
+                        <div class="row">
+                          <div class="col-md-4">
+                              <label for="address">Catégorie du permis passé*</label>
+                              <br>
+                              <select class="form-control d-block w-100" id="country" required="" name="category">
+                                <option selected="selected" value="A">A</option>
+                                <option   value="A1">A1</option>
+                                <option   value="A2">A2</option>
+                                <option   value="B">B</option>
+                                <option   value="B1">B1</option>
+                                <option   value="BE">BE</option>
+                                <option   value="C">C</option>
+                                <option   value="CE">CE</option>
+                                <option   value="C1">C1</option>
+                                <option   value="C1E">C1E</option>
+                                <option   value="D">D</option>
+                                <option   value="DE">DE</option>
+                                <option   value="D1">D1</option>
+                                <option   value="D1E">D1E</option>
+                                <option   value="E">E</option>         
+                                </select>
+                              </select>
+                          </div>
+                          <div class="col-md-4">
+                              <label for="address2">Date*</label>
+                              <input type="text" class="form-control" name="delivery_date" id="address2" placeholder="01/01/2022" required>
+                              <div class="invalid-feedback" style="width: 100%;">
+                                  Champ obligatoire.
+                              </div>
+                          </div>
+                          <div class="col-md-4">
+                              <label for="Expert">Expert*</label>
+                              <input  type="number"
+                                      class="form-control" name="expert"
+                                      required
+                                      id="Expert" placeholder="0140">
+                              <div class="invalid-feedback">
+                                Champ obligatoire.
+                              </div>
+                          </div>
+                        </div> 
+                      </div>
+                        <div style="float: right">
+                            <button class="btn btn-success" type="submit">Ajouter</button>
+                        </div>
+    
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 my-">
+                <div class="card">
+                  <div class="card-header d-flex justify-content-between">
+                    <h4 class="card-title align-text-bottom">Liste des candidats</h4>
+                    <form class="card p-2" action="/admin/search" method="post">
                       <div class="input-group">
                           <input type="text" name="search" class="form-control" placeholder="Rechercher un candidat">
                           <div class="input-group-append">
@@ -186,7 +185,9 @@
                           </div>
                       </div>
                   </form>
-                  <div class="table-responsive">
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
                       <table class="table">
                           <thead>
                           <tr>
@@ -198,6 +199,7 @@
                               <th scope="col">Catégorie du permis</th>
                               <th scope="col">Date</th>
                               <th scope="col">Expert</th>
+                              <th scope="col">Actions</th>
                               <th scope="col">Actions</th>
                           </tr>
                           </thead>
@@ -213,6 +215,7 @@
                                   <td> <%= license.category %> </td>
                                   <td> <%= license.delivery_date? license.delivery_date:'' %> </td>
                                   <td> <%= license.expert %> </td>
+                                  <td> <%= license.created_at.getDate().toString().padStart(2, '0') %>/<%= license.created_at.getMonth().toString().padStart(2, '0') %>/<%= license.created_at.getFullYear() %> </td>
                                   <form method="POST" action="/admin/delete/<%- license.id %>?_method=DELETE">
                                       <input type="hidden" name="_method" value="delete">
                                       <td>
@@ -228,13 +231,16 @@
                           <% } %>
                           </tbody>
                       </table>
+                    </div>
                   </div>
-
-
+                </div>
               </div>
+            </div>
+           
+          
+
           </div>
         </div>
-
         <script>
           // Example starter JavaScript for disabling form submissions if there are invalid fields
           (function() {
@@ -260,5 +266,4 @@
       
     
     </body>
-</body>
 </html>

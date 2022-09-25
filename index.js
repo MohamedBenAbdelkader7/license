@@ -75,8 +75,8 @@ router.post('/admin/new', function(req,res){
      return res.json({ errors: true, body: null });
     }
     const query = {
-        text: 'INSERT INTO license_value (code,firstname,lastname,day,month,year,category,expert,delivery_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
-        values: [code, firstname, lastname, day, month, year, category, expert, delivery_date]
+        text: 'INSERT INTO license_value (code,firstname,lastname,day,month,year,category,expert,delivery_date,created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, to_timestamp($10 / 1000.0))',
+        values: [code, firstname, lastname, day, month, year, category, expert, delivery_date,Date.now()]
     };
     // INSERT INTO license_value(code, firstname, lastname, day, month, year, category, expert, delivery_date) VALUES (160638100251, ‘MAJERUS’,’JULIEN’, 20, 08, 2000, A2, ‘0145’, '2013-06-01');
     pool.query(query.text,query.values, async (err, result) => {
@@ -119,7 +119,11 @@ router.post("/admin/delete/:id", async (req, res) => {
         values: [req.params.id]
     };
     try {
-        await pool.query(deleteQuery);
+        await pool.query(deleteQuery, async (err, result) => {
+            if (err) {
+                throw err
+              }
+            });
         const query = {
             text: 'SELECT * from license_value'
         }
@@ -156,6 +160,38 @@ router.get('/download',
         } catch (error) {
             console.error(error);
         }
+});
+router.get('/download/:id',
+    async function(req,res){
+        const license  = req.params.id;
+        const query = {
+            text: 'SELECT * from license_value where id=$1',
+            values: [license]
+        }
+        const response = await pool.query(query);
+        console.log('response => ', response.rows);
+        const template = pdfTemplate(response.rows[0]);
+        pdf.create(template, options).toBuffer(function(err, buffer){
+            res.setHeader('Content-Disposition', 'attachment; filename=' + response.rows[0].code + '.pdf');
+            res.setHeader('Content-Type', 'application/pdf');
+            res.send(buffer)
+        });
+        try {
+
+        } catch (error) {
+            console.error(error);
+        }
+});
+router.get('/pdf/:id',async function(req,res){
+    
+        const license  = req.params.id;
+        const query = {
+            text: 'SELECT * from license_value where id=$1',
+            values: [license]
+        }
+        const response = await pool.query(query);
+        res.render('pdf.ejs', { license: response.rows[0] });
+    
 });
 router.post('/license', async function(req, res) {
     const { license, day, month, year, category } = req.body;
