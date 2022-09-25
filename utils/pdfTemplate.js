@@ -17,7 +17,7 @@ module.exports = (license) => {
 line-height: 1.024902;
 color: rgb(0,0,0);
 font-size: 35px;
-font-weight: 900;
+font-weight: 600;
 letter-spacing: 2px;
 }
 /*! 
