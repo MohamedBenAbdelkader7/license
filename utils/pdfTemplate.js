@@ -9,7 +9,7 @@ module.exports = (license) => {
 <meta name="generator" content="pdf2htmlEX"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,600;0,900;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,700;0,900;1,300&display=swap');
 </style>
 <style type="text/css">
 .num{
