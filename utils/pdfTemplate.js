@@ -16,7 +16,7 @@ module.exports = (license) => {
     font-family: "Titillium Web";
 line-height: 1.024902;
 color: rgb(0,0,0);
-font-size: 35px;
+font-size: 40px;
 font-weight: 600;
 letter-spacing: 2px;
 }
