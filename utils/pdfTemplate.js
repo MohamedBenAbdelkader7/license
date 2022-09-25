@@ -8,9 +8,12 @@ module.exports = (license) => {
 <meta charset="utf-8"/>
 <meta name="generator" content="pdf2htmlEX"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,600;0,900;1,300&display=swap');
+</style>
 <style type="text/css">
 .num{
-    font-family: "Lato";
+    font-family: "Titillium Web";
 line-height: 1.024902;
 color: rgb(0,0,0);
 font-size: 35px;
