@@ -18,7 +18,7 @@ line-height: 1.024902;
 color: rgb(0,0,0);
 font-size: 40px;
 font-weight: 700;
-letter-spacing: 2px;
+letter-spacing: 3px;
 }
 /*! 
  * Base CSS for pdf2htmlEX
