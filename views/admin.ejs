@@ -208,14 +208,14 @@
                           <% licenses.forEach(function (license) { %>
                               <tr>
                                   <th scope="row"><%= license.id %></th>
-                                  <td> <%= license.lastname %> </td>
-                                  <td> <%= license.firstname %> </td>
-                                  <td> <%= license.code %> </td>
-                                  <td> <%= license.day %> / <%= license.month %> / <%= license.year %> </td>
-                                  <td> <%= license.category %> </td>
-                                  <td> <%= license.delivery_date? license.delivery_date:'' %> </td>
-                                  <td> <%= license.expert %> </td>
-                                  <td>
+                                  <td style='white-space: nowrap'> <%= license.lastname %> </td>
+                                  <td style='white-space: nowrap'> <%= license.firstname %> </td>
+                                  <td style='white-space: nowrap'> <%= license.code %> </td>
+                                  <td style='white-space: nowrap'> <%= license.day %>/<%= license.month %>/<%= license.year %> </td>
+                                  <td style='white-space: nowrap'> <%= license.category %> </td>
+                                  <td style='white-space: nowrap'> <%= license.delivery_date? license.delivery_date:'' %> </td>
+                                  <td style='white-space: nowrap'> <%= license.expert %> </td>
+                                  <td style='white-space: nowrap'>
                                       <a href="/download/<%=license.id%>" class="btn btn-secondary text-white d-inline-block">
                                         <i class="fa fa-print fa-sm" aria-hidden="true"></i>
                                       </a>
