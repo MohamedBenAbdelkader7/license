@@ -10,7 +10,7 @@ module.exports = (license) => {
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <style type="text/css">
 .num{
-    font-family: fantasy;
+    font-family: ,ff1;
 line-height: 1.024902;
 color: rgb(0,0,0);
 font-size: 22px;
