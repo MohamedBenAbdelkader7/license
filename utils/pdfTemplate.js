@@ -183,8 +183,8 @@ letter-spacing: 3px;
 .y2{bottom:749.510000px;}
 .y25{bottom:767.920000px;}
 .y911{
-    bottom: 600.01pt;
-    left: 420px;
+    bottom: 750.01pt;
+    left: 415px;
 }
 .y1{bottom:781.520000px;}
 .h3{height:16.367188px;}
