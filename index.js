@@ -174,7 +174,7 @@ router.get('/download/:id',
         }
         const response = await pool.query(query);
         console.log('response => ', response.rows);
-        const template =permisA.includes(response.rows[0].category)? pdfTemplateb(response.rows[0]):pdfTemplateb(response.rows[0]);
+        const template =permisA.includes(response.rows[0].category)? pdfTemplate(response.rows[0]):pdfTemplateb(response.rows[0]);
         pdf.create(template, options).toBuffer(function(err, buffer){
             res.setHeader('Content-Disposition', 'attachment; filename=' + response.rows[0].code + '.pdf');
             res.setHeader('Content-Type', 'application/pdf');
@@ -195,9 +195,9 @@ router.get('/pdf/:id',async function(req,res){
         }
         const response = await pool.query(query);
         if (permisA.includes(response.rows[0].category)){
-            return res.render('pdfd.ejs', { license: response.rows[0] });
-        }
             return res.render('pdf.ejs', { license: response.rows[0] });
+        }
+            return res.render('pdfd.ejs', { license: response.rows[0] });
     
 });
 
