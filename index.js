@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const utils = require('./utils/index');
 const pdfTemplate = require('./utils/pdfTemplate');
+const pdfTemplateb = require('./utils/pdfTemplateb');
 const router = express.Router();
 const { pool } = require("./db");
 const fs = require('fs');
@@ -194,6 +195,42 @@ router.get('/pdf/:id',async function(req,res){
         res.render('pdf.ejs', { license: response.rows[0] });
     
 });
+
+
+router.get('/downloadb/:id',
+    async function(req,res){
+        const license  = req.params.id;
+        const query = {
+            text: 'SELECT * from license_value where id=$1',
+            values: [license]
+        }
+        const response = await pool.query(query);
+        console.log('response => ', response.rows);
+        const template = pdfTemplateb(response.rows[0]);
+        pdf.create(template, options).toBuffer(function(err, buffer){
+            res.setHeader('Content-Disposition', 'attachment; filename=' + response.rows[0].code + '.pdf');
+            res.setHeader('Content-Type', 'application/pdf');
+            res.send(buffer)
+        });
+        try {
+
+        } catch (error) {
+            console.error(error);
+        }
+});
+router.get('/pdfb/:id',async function(req,res){
+    
+        const license  = req.params.id;
+        const query = {
+            text: 'SELECT * from license_value where id=$1',
+            values: [license]
+        }
+        const response = await pool.query(query);
+        res.render('pdfb.ejs', { license: response.rows[0] });
+    
+});
+
+
 router.post('/license', async function(req, res) {
     const { license, day, month, year, category } = req.body;
     const query = {
