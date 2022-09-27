@@ -158,7 +158,7 @@ letter-spacing: 3px;
 .y32{bottom:521.080000px;}
 .y10{bottom:531.960000px;}
 .y31{bottom:532.010000px;}
-.yf{bottom:541.680000px;}
+.yf{bottom:536.680000px;}
 .y30{bottom:542.950000px;}
 .ye{bottom:556.820000px;}
 .y2f{bottom:561.950000px;}
@@ -339,7 +339,7 @@ letter-spacing: 3px;
 .y32{bottom:694.773333pt;}
 .y10{bottom:709.280000pt;}
 .y31{bottom:709.346667pt;}
-.yf{bottom:722.240000pt;}
+.yf{bottom:714.240000pt;}
 .y30{bottom:723.933333pt;}
 .ye{bottom:742.426667pt;}
 .y2f{bottom:749.266667pt;}
@@ -395,7 +395,7 @@ letter-spacing: 3px;
 .x16{left:303.346667pt;}
 .x3{left:449.333333pt;}
 .x8{left:460.773333pt;}
-.x88{left:563.773333pt;}
+.x88{left:520.773333pt;}
 .x2{left:572.120000pt;}
 .x6{left:628.000000pt;}
 .xc{left:644.106667pt;}
@@ -406,7 +406,7 @@ letter-spacing: 3px;
 .x10{left:706.600000pt;}
 .xf{left:716.106667pt;}
 }
-</style>
+    </style>
 <script>
 /*
  Copyright 2012 Mozilla Foundation 
